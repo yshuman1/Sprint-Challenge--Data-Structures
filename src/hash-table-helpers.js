@@ -34,6 +34,47 @@ class LimitedArray {
     this.storage[index] = value;
   }
 }
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+
+  addToTail(value) {
+    const newNode = {
+      value,
+      next: null,
+    };
+    if (!this.head) this.head = newNode;
+    if (!this.tail) {
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+  }
+
+  removeHead() {
+    if (!this.head) return null;
+    if (!this.head.next) this.tail = null;
+    const removedNode = this.head;
+    this.head = this.head.next;
+    return removedNode.value;
+  }
+
+  contains(value) {
+    let testNode = this.head;
+    while (testNode.next) {
+      if (value === testNode.value) {
+        return true;
+      }
+      testNode = testNode.next;
+    }
+    return false;
+  }
+}
+
 /* eslint-disable no-bitwise, operator-assignment */
 // This is hash function you'll be using to hash keys
 // There's some bit-shifting magic going on here, but essentially, all it is doing is performing the modulo operator

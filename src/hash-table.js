@@ -34,13 +34,14 @@ class HashTable {
   // If no bucket has been created for that index, instantiate a new bucket and add the key, value pair to that new bucket
   // If the key already exists in the bucket, the newer value should overwrite the older value associated with that key
   insert(key, value) {
-    if (this.capacityIsFull()) this.resize();
-    const index = getIndexBelowMax(key.toString(), this.limit);
-    let bucket = this.storage.get(index) || [];
+    if (this.capacityIsFull()) this.resize(); // checks to see if limited array of hashtable is full
+    const pair = { key, value }; // creates an obj with arguments in it
+    const index = getIndexBelowMax(key.toString(), this.limit); // gets our hash
+    let bucket = this.storage.get(index) || []; // creates the bucket at the index in the hashtable but how do i make this a linkedlist?
 
-    bucket = bucket.filter(item => item[0] !== key);
-    bucket.push([key, value]);
-    this.storage.set(index, bucket);
+    bucket = bucket.filter(item => item[0] !== key); // searches the array in the bucket and im not sure ???/
+    bucket.push([key, value]); // pushes the args into the bucket -- need to change this to add func from list
+    this.storage.set(index, bucket); // is this what adds the bucket to the limitedArray?
   }
   // Removes the key, value pair from the hash table
   // Fetch the bucket associated with the given key using the getIndexBelowMax function
