@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable class-methods-use-this */
-const { LimitedArray, getIndexBelowMax } = require('./hash-table-helpers');
+const { LimitedArray, LinkedList, getIndexBelowMax } = require('./hash-table-helpers');
 
 class HashTable {
   constructor(limit = 8) {

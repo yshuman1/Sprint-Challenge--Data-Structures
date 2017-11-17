@@ -93,4 +93,5 @@ const getIndexBelowMax = (str, max) => {
 module.exports = {
   LimitedArray,
   getIndexBelowMax,
+  LinkedList,
 };
